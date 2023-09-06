@@ -1,8 +1,11 @@
-import { nanoid } from 'nanoid';
-
-import Form from 'components/Form/Form';
 import { Component } from 'react';
+
+import ContactForm from 'components/ContactForm/ContactForm';
+import Filter from 'components/Filter/Filter';
 import ContactsList from 'components/ContactsList/ContactsList';
+
+import { Container } from './App.styled';
+import { nanoid } from 'nanoid';
 
 class App extends Component {
   state = {
@@ -18,38 +21,36 @@ class App extends Component {
   createContact = data => {
     const newContact = { id: nanoid(), ...data };
 
-    this.setState({ contacts: [...this.state.contacts, newContact] });
+    this.setState({ contacts: [newContact, ...this.state.contacts] });
+  };
+
+  filterChange = ({ target: { value } }) => {
+    this.setState(prev => {
+      filter: prev.contacts.filter(contact =>
+        contact.name.toLowerCase().includes(value.toLowerCase())
+      );
+    });
+
+    // this.state.contacts.filter(contact => contact.name.includes(value));
   };
 
   render() {
     return (
-      <>
-        <h2>Phonebook</h2>
-        <Form createContact={this.createContact} />
+      <Container>
+        <h1>Phonebook</h1>
+        <ContactForm createContact={this.createContact} />
         <h2>Contacts</h2>
-        <ul>
-          <ContactsList contacts={this.state.contacts} />
-        </ul>
-      </>
+        <Filter
+          title="Find contacts by name"
+          filterChange={this.filterChange}
+        />
+        <ContactsList
+          filter={this.state.filter}
+          contacts={this.state.contacts}
+        />
+      </Container>
     );
   }
 }
 
 export default App;
-
-// export const App = () => {
-//   return (
-//     <div
-//       style={{
-//         height: '100vh',
-//         display: 'flex',
-//         justifyContent: 'center',
-//         alignItems: 'center',
-//         fontSize: 40,
-//         color: '#010101'
-//       }}
-//     >
-//       React homework template
-//     </div>
-//   );
-// };
