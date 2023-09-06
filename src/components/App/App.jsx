@@ -25,12 +25,11 @@ class App extends Component {
   };
 
   filterChange = ({ target: { value } }) => {
-    this.setState(prev => {
-      filter: prev.contacts.filter(contact =>
-        contact.name.toLowerCase().includes(value.toLowerCase())
-      );
-    });
-
+    // this.setState(prev => {
+    //   filter: prev.contacts.filter(contact =>
+    //     contact.name.toLowerCase().includes(value.toLowerCase())
+    //   );
+    // });
     // this.state.contacts.filter(contact => contact.name.includes(value));
   };
 
