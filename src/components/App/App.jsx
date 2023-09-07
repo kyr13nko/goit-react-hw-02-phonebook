@@ -35,8 +35,6 @@ class App extends Component {
   };
 
   render() {
-    console.log('this.state', this.state);
-
     const { contacts, filter } = this.state;
 
     const filterContacts = contacts.filter(contact =>
@@ -45,7 +43,7 @@ class App extends Component {
     return (
       <Container>
         <h1>Phonebook</h1>
-        <ContactForm createContact={this.createContact} />
+        <ContactForm contacts={contacts} createContact={this.createContact} />
         <h2>Contacts</h2>
         <Filter
           title="Find contacts by name"

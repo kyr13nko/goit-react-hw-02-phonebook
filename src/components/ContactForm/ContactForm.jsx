@@ -1,5 +1,7 @@
 import { Component } from 'react';
 
+import Notiflix from 'notiflix';
+
 const INITIAL_STATE = { name: '', number: '' };
 
 class ContactForm extends Component {
@@ -13,8 +15,27 @@ class ContactForm extends Component {
     event.preventDefault();
 
     const { name, number } = this.state;
+
+    const contactExists = this.props.contacts.some(
+      contact => contact.name.toLowerCase() === name.toLowerCase()
+    );
+    if (contactExists) {
+      // alert(`${name} is already in contacts.`);
+      Notiflix.Report.failure(
+        'Contact already exists',
+        `${name} is already in contacts`,
+        'Back'
+      );
+      return;
+    }
+
     // this.props.createContact(this.state);
     this.props.createContact({ name, number });
+    Notiflix.Report.success(
+      'Contact created',
+      `${name} is now in your contacts`,
+      'Done'
+    );
 
     this.setState(INITIAL_STATE);
   };
