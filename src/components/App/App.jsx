@@ -28,7 +28,15 @@ class App extends Component {
     this.setState({ filter: value });
   };
 
+  deleteContact = id => {
+    this.setState(prev => ({
+      contacts: prev.contacts.filter(contact => contact.id !== id),
+    }));
+  };
+
   render() {
+    console.log('this.state', this.state);
+
     const { contacts, filter } = this.state;
 
     const filterContacts = contacts.filter(contact =>
@@ -43,7 +51,10 @@ class App extends Component {
           title="Find contacts by name"
           filterChange={this.filterChange}
         />
-        <ContactsList contacts={filterContacts} />
+        <ContactsList
+          contacts={filterContacts}
+          deleteContact={this.deleteContact}
+        />
       </Container>
     );
   }
