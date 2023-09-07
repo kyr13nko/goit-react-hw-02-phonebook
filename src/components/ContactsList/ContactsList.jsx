@@ -1,4 +1,4 @@
-import { List, Item, ContactValue } from './ContactsList.styled';
+import { List, Item, ContactValue, Button } from './ContactsList.styled';
 
 const ContactsList = ({ contacts, deleteContact }) => {
   return (
@@ -10,9 +10,9 @@ const ContactsList = ({ contacts, deleteContact }) => {
               {name}
               <span>{number}</span>
             </ContactValue>
-            <button type="button" onClick={() => deleteContact(id)}>
+            <Button type="button" onClick={() => deleteContact(id)}>
               Delete
-            </button>
+            </Button>
           </Item>
         );
       })}

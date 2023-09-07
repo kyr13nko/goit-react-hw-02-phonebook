@@ -1,32 +1,33 @@
 import { styled } from 'styled-components';
 
-export const List = styled.ul`
+export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 8px;
 `;
 
-export const Item = styled.li`
+export const Label = styled.label`
   display: flex;
-  justify-content: space-between;
-  gap: 20px;
+  flex-direction: column;
+  gap: 4px;
 
-  border-bottom: 4px solid rgb(84, 76, 122);
-
-  &:nth-child(2n) {
-    border-bottom: 4px solid rgb(57, 95, 58);
-  }
+  font-size: 12px;
 `;
 
-export const ContactValue = styled.p`
-  display: flex;
-  justify-content: space-between;
+export const Input = styled.input`
+  height: 20px;
 
-  width: 400px;
+  border: none;
+  outline: none;
+
+  box-shadow: rgb(84, 76, 122) 2px -2px 0px 2px,
+    rgb(57, 95, 58) -2px 2px 0px 2px;
 `;
 
 export const Button = styled.button`
   cursor: pointer;
+  width: 150px;
+  background-color: transparent;
 
   font-weight: 800;
 
@@ -37,6 +38,7 @@ export const Button = styled.button`
   box-shadow: rgb(84, 76, 122) 2px -2px 0px 2px,
     rgb(57, 95, 58) -2px 2px 0px 2px;
   padding: 4px 16px;
+  margin-top: 16px;
 
   &:hover {
     background-color: rgba(128, 128, 128, 0.1);

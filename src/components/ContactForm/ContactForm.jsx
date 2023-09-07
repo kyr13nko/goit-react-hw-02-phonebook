@@ -1,6 +1,7 @@
 import { Component } from 'react';
 
 import Notiflix from 'notiflix';
+import { Button, Form, Input, Label } from './ContactForm.styled';
 
 const INITIAL_STATE = { name: '', number: '' };
 
@@ -44,10 +45,10 @@ class ContactForm extends Component {
     const { name, number } = this.state;
 
     return (
-      <form onSubmit={this.onFormSubmit}>
-        <label>
+      <Form onSubmit={this.onFormSubmit}>
+        <Label>
           Name
-          <input
+          <Input
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -56,10 +57,10 @@ class ContactForm extends Component {
             value={name}
             required
           />
-        </label>
-        <label>
+        </Label>
+        <Label>
           Phone
-          <input
+          <Input
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
@@ -68,9 +69,9 @@ class ContactForm extends Component {
             value={number}
             required
           />
-        </label>
-        <button type="submit">Add contact</button>
-      </form>
+        </Label>
+        <Button type="submit">Add contact</Button>
+      </Form>
     );
   }
 }

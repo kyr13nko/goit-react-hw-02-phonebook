@@ -6,6 +6,7 @@ import ContactsList from 'components/ContactsList/ContactsList';
 
 import { Container } from './App.styled';
 import { nanoid } from 'nanoid';
+import Notiflix from 'notiflix';
 
 class App extends Component {
   state = {
@@ -32,6 +33,7 @@ class App extends Component {
     this.setState(prev => ({
       contacts: prev.contacts.filter(contact => contact.id !== id),
     }));
+    Notiflix.Report.success('Contact deleted', '', 'Okay');
   };
 
   render() {
