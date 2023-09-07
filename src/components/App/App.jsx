@@ -15,7 +15,7 @@ class App extends Component {
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
-    filter: '',
+    filter: null,
   };
 
   createContact = data => {
@@ -25,12 +25,13 @@ class App extends Component {
   };
 
   filterChange = ({ target: { value } }) => {
-    // this.setState(prev => {
-    //   filter: prev.contacts.filter(contact =>
-    //     contact.name.toLowerCase().includes(value.toLowerCase())
-    //   );
-    // });
-    // this.state.contacts.filter(contact => contact.name.includes(value));
+    this.setState(prev => {
+      return {
+        filter: prev.contacts.filter(contact =>
+          contact.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())
+        ),
+      };
+    });
   };
 
   render() {
@@ -43,10 +44,7 @@ class App extends Component {
           title="Find contacts by name"
           filterChange={this.filterChange}
         />
-        <ContactsList
-          filter={this.state.filter}
-          contacts={this.state.contacts}
-        />
+        <ContactsList contacts={this.state.filter || this.state.contacts} />
       </Container>
     );
   }
