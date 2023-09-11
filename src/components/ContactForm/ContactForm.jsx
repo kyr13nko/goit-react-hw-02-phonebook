@@ -6,7 +6,7 @@ import { Button, Form, Input, Label } from './ContactForm.styled';
 const INITIAL_STATE = { name: '', number: '' };
 
 class ContactForm extends Component {
-  state = INITIAL_STATE;
+  state = { ...INITIAL_STATE };
 
   onFormInput = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -38,7 +38,7 @@ class ContactForm extends Component {
       'Done'
     );
 
-    this.setState(INITIAL_STATE);
+    this.setState({ ...INITIAL_STATE });
   };
 
   render() {

@@ -22,7 +22,7 @@ class App extends Component {
   createContact = data => {
     const newContact = { id: nanoid(), ...data };
 
-    this.setState({ contacts: [newContact, ...this.state.contacts] });
+    this.setState(prev => ({ contacts: [newContact, ...prev.contacts] }));
   };
 
   filterChange = ({ target: { value } }) => {
